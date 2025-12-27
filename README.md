@@ -45,3 +45,25 @@ npm i --save @fortawesome/free-solid-svg-icons
 npm i --save @fortawesome/free-regular-svg-icons
 npm i --save @fortawesome/free-brands-svg-icons
 ```
+
+### Installing tailwindcss:
+
+#### Step 1:
+
+```shell
+npm install tailwindcss @tailwindcss/vite
+```
+
+#### Step 2: Add the @tailwindcss/vite plugin to your Vite configuration.
+
+```shell
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [
+    tailwindcss(),
+  ],
+})
+```
+
