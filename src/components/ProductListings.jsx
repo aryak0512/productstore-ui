@@ -1,8 +1,19 @@
-const ProductListings = () => {
+import ProductCard from "./ProductCard.jsx";
+
+const ProductListings = ({products}) => {
+    console.log("Products", products)
     return (
         <>
-            ProductListings
+            {/*tricky nasty syntax alert!!*/}
+            {products.length > 0 ? (
+                products.map((product) => (
+                    <ProductCard key={product.productId} product={product}/>
+                ))
+            ) : (
+                <p className="product-listings-empty">No products found</p>
+            )}
         </>
+
     );
 }
 
