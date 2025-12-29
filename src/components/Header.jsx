@@ -3,7 +3,7 @@ import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
     return (
-        <nav className="bg-gray-800 text-white">
+        <nav className="bg-gray-800 text-white text-xl">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
                     <div className="text-xl font-bold">
