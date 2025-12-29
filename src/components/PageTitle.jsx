@@ -1,6 +1,6 @@
-const PageTitle = () => {
+const PageTitle = ({title}) => {
     return (
-        <div>Page title</div>
+        <h1 className="text-center font-bold text-3xl p-4">{title}</h1>
     );
 }
 

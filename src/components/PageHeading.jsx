@@ -1,10 +1,10 @@
 import PageTitle from "./PageTitle.jsx";
 
-const PageHeading = () => {
+const PageHeading = ({title, children}) => {
     return (
         <>
-            <PageTitle/>
-            <h2>Page Heading</h2>
+            <PageTitle title={title}/>
+            <h2 className="text-center text-5xl font-semibold text-emerald-400">{children}</h2>
         </>
     );
 }
