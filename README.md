@@ -76,9 +76,21 @@ npm i axios
 ### React hooks:
 
 ```shell
-  useEffect(setup, dependencies?)
+  1. useEffect(setup, dependencies?)
 ```
 
 - lets you synchronise the component with an external system. Eg API call during mounting of DOM
+
+```shell
+  2. const [var, setVar] useState(initialValue)
+```
+
 - The set() function of `useState()` triggers a re-render of the component
 - The initial value for `useState()` can be a setUp method as well. E.g. : `() => populateTodos()`
+
+```shell
+  3. const [cachedValue] useMemo(calculation, dependencies?)
+```
+
+- Used when we want to cache certain expensive calculations/operations during re-rendering of components
+- calculation can be a method

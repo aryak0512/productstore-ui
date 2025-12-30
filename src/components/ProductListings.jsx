@@ -1,6 +1,6 @@
 import ProductCard from "./ProductCard.jsx";
 import SearchBox from "./SearchBox.jsx";
-import {useState} from "react";
+import {useMemo, useState} from "react";
 import Dropdown from "./Dropdown.jsx";
 
 const ProductListings = ({products}) => {
@@ -8,6 +8,34 @@ const ProductListings = ({products}) => {
     const [itemToSearch, setItemToSearch] = useState("")
     const [sortingStrategy, setSortingStrategy] = useState("Popularity")
     const options = ["Popularity", "Increasing price", "Decreasing price"];
+
+    // the expense operation of filter and sort is placed inside useMemo for caching
+    const filteredAndSortedProducts = useMemo(() => {
+
+        // filtering logic
+        let filteredProducts = products.filter(product =>
+            product.name.toLowerCase().includes(itemToSearch.toLowerCase())
+        );
+
+        // sorting logic
+        switch (sortingStrategy) {
+            case "Increasing price": {
+                filteredProducts = filteredProducts.sort((a, b) => a.price - b.price)
+                break;
+            }
+            case "Decreasing price": {
+                filteredProducts = filteredProducts.sort((a, b) => b.price - a.price)
+                break;
+            }
+            default: {
+                filteredProducts = filteredProducts.sort((a, b) => b.popularity - a.popularity)
+                break;
+            }
+        }
+        return filteredProducts;
+
+    }, [sortingStrategy, itemToSearch, products]);
+
 
     // used by SearchBox
     function handleSearchChange(searchText) {
@@ -18,27 +46,6 @@ const ProductListings = ({products}) => {
     function handleSort(event, strategy) {
         setSortingStrategy(strategy);
         console.log("Sorting strategy selected is : ", strategy)
-    }
-
-    // filtering logic
-    let filteredProducts = products.filter(product =>
-        product.name.toLowerCase().includes(itemToSearch.toLowerCase())
-    );
-
-    // sorting logic
-    switch (sortingStrategy) {
-        case "Increasing price": {
-            filteredProducts = filteredProducts.sort((a, b) => a.price - b.price)
-            break;
-        }
-        case "Decreasing price": {
-            filteredProducts = filteredProducts.sort((a, b) => b.price - a.price)
-            break;
-        }
-        default: {
-            filteredProducts = filteredProducts.sort((a, b) => b.popularity - a.popularity)
-            break;
-        }
     }
 
     return (
@@ -52,8 +59,8 @@ const ProductListings = ({products}) => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-6 py-12">
                 {/*tricky nasty syntax alert!!*/}
-                {filteredProducts.length > 0 ? (
-                    filteredProducts.map((product) => (
+                {filteredAndSortedProducts.length > 0 ? (
+                    filteredAndSortedProducts.map((product) => (
                         <ProductCard key={product.productId} product={product}/>
                     ))
                 ) : (
