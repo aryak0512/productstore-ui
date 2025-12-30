@@ -67,3 +67,8 @@ export default defineConfig({
 })
 ```
 
+#### Installing Axios:
+
+```shell
+npm i axios
+```
