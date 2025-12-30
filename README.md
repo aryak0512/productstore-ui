@@ -80,3 +80,5 @@ npm i axios
 ```
 
 - lets you synchronise the component with an external system. Eg API call during mounting of DOM
+- The set() function of `useState()` triggers a re-render of the component
+- The initial value for `useState()` can be a setUp method as well. E.g. : `() => populateTodos()`

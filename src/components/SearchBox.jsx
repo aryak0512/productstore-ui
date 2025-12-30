@@ -10,7 +10,7 @@ function SearchBox({label, placeholder, value, handleSearchChange}) {
                 className="px-4 py-2 text-base border rounded-md transition border-primary focus:ring focus:ring-dark focus:outline-none text-gray-800"
                 placeholder={placeholder}
                 value={value}
-                onChange={() => handleSearchChange(event.target.value)}
+                onChange={(event) => handleSearchChange(event.target.value)}
             />
         </div>
     );
