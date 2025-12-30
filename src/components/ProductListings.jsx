@@ -18,14 +18,28 @@ const ProductListings = ({products}) => {
     function handleSort(event, strategy) {
         setSortingStrategy(strategy);
         console.log("Sorting strategy selected is : ", strategy)
-
-        // actual sorting logic
     }
 
-
-    const filteredProducts = products.filter(product =>
+    // filtering logic
+    let filteredProducts = products.filter(product =>
         product.name.toLowerCase().includes(itemToSearch.toLowerCase())
     );
+
+    // sorting logic
+    switch (sortingStrategy) {
+        case "Increasing price": {
+            filteredProducts = filteredProducts.sort((a, b) => a.price - b.price)
+            break;
+        }
+        case "Decreasing price": {
+            filteredProducts = filteredProducts.sort((a, b) => b.price - a.price)
+            break;
+        }
+        default: {
+            filteredProducts = filteredProducts.sort((a, b) => b.popularity - a.popularity)
+            break;
+        }
+    }
 
     return (
         <div className="max-w-[1152px] mx-auto">
