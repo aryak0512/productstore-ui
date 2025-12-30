@@ -89,7 +89,7 @@ npm i axios
 - The initial value for `useState()` can be a setUp method as well. E.g. : `() => populateTodos()`
 
 ```shell
-  3. const [cachedValue] useMemo(calculation, dependencies?)
+  3. const [cachedValue] useMemo(calculation, dependencies)
 ```
 
 - Used when we want to cache certain expensive calculations/operations during re-rendering of components
