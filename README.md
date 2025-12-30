@@ -72,3 +72,11 @@ export default defineConfig({
 ```shell
 npm i axios
 ```
+
+### React hooks:
+
+```shell
+  useEffect(setup, dependencies?)
+```
+
+- lets you synchronise the component with an external system. Eg API call during mounting of DOM
