@@ -4,7 +4,7 @@ import App from './App.jsx'
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
 import Login from "./components/Login.jsx";
 import About from "./components/About.jsx";
-import Contact from "./components/Contact.jsx";
+import Contact, {submitForm} from "./components/Contact.jsx";
 import Cart from "./components/Cart.jsx";
 import Home, {productLoader} from "./components/Home.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
@@ -14,7 +14,7 @@ const routeDefinitions = createRoutesFromElements(
         <Route index element={<Home/>} loader={productLoader}/>
         <Route path="/home" element={<Home/>} loader={productLoader}/>
         <Route path="/about" element={<About/>}/>
-        <Route path="/contact" element={<Contact/>}/>
+        <Route path="/contact" element={<Contact/>} action={submitForm}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/cart" element={<Cart/>}/>
     </Route>
