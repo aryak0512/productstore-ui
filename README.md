@@ -125,3 +125,13 @@ function toggleThemeButtonClicked() {
     })
 }
 ```
+
+### Save theme to broswer local storage
+
+- Step 1 : `localStorage.setItem("theme", "dark")`
+- Step 2 : Use useEffect() hook for initial render
+
+### React router
+
+- Step 1 : `npm i react-router-dom`
+- Step 2 : Set up Routing on App

@@ -1,10 +1,21 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMoon, faShoppingCart, faSun} from "@fortawesome/free-solid-svg-icons";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const Header = () => {
 
-    const [theme, setTheme] = useState("light")
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem("theme") === "dark" ? "dark" : "light";
+    })
+
+    // for setting the theme for first load of page
+    useEffect(() => {
+        if (theme === "light") {
+            document.documentElement.classList.remove("dark")
+        } else {
+            document.documentElement.classList.add("dark")
+        }
+    }, []);
 
     function toggleThemeButtonClicked() {
         setTheme((prevTheme) => {
@@ -14,6 +25,7 @@ const Header = () => {
             } else {
                 document.documentElement.classList.remove("dark")
             }
+            localStorage.setItem("theme", newTheme); // saved in browser
             return newTheme;
         })
     }
@@ -31,10 +43,10 @@ const Header = () => {
                     </button>
 
                     <div className="flex space-x-6">
-                        <a href="/" className="hover:text-gray-300">
+                        <a href="/home" className="hover:text-gray-300">
                             Home
                         </a>
-                        <a href="/shop" className="hover:text-gray-300">
+                        <a href="/login" className="hover:text-gray-300">
                             Shop
                         </a>
                         <a href="/about" className="hover:text-gray-300">
