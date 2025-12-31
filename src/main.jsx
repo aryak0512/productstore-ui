@@ -7,12 +7,14 @@ import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import Cart from "./components/Cart.jsx";
 import Home from "./components/Home.jsx";
+import ErrorPage from "./components/ErrorPage.jsx";
 
 export const appRouter = createBrowserRouter([
 
     {
         path: "/",
         element: <App/>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 index: true,
