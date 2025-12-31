@@ -6,7 +6,7 @@ const Header = () => {
 
     const [theme, setTheme] = useState("light")
 
-    function test() {
+    function toggleThemeButtonClicked() {
         setTheme((prevTheme) => {
             const newTheme = prevTheme === "light" ? "dark" : "light";
             if (prevTheme === "light") {
@@ -26,7 +26,7 @@ const Header = () => {
                         ShopHub
                     </div>
 
-                    <button onClick={test}>
+                    <button onClick={toggleThemeButtonClicked}>
                         <FontAwesomeIcon icon={theme === "light" ? faMoon : faSun}/>
                     </button>
 

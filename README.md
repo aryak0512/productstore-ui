@@ -54,7 +54,7 @@ npm i --save @fortawesome/free-brands-svg-icons
 npm install tailwindcss @tailwindcss/vite
 ```
 
-#### Step 2: Add this line to App.css
+#### Step 2: Add this line to `index.css` [Top level css file]
 
 ```shell
 @import "tailwindcss";
@@ -104,6 +104,24 @@ npm i axios
 ### Dark mode
 
 - Step 1 : Add `@custom-variant dark (&:where(.dark, .dark *));` to the css file where `@import "tailwindcss"` is
-  mentioned (App.css)
+  mentioned (index.css)
 - Step 2 : Add prefix `dark:` to all tailwind utility classes
-- Step 3 : Add or remove `dark` from top level HTML element as per state value
+- Step 3 : Create toggle button.
+- Step 4 : In event of button click, add or remove `dark` from top level HTML element as per state value
+- Refer below code:
+
+```javascript
+const [theme, setTheme] = useState("light")
+
+function toggleThemeButtonClicked() {
+    setTheme((prevTheme) => {
+        const newTheme = prevTheme === "light" ? "dark" : "light";
+        if (prevTheme === "light") {
+            document.documentElement.classList.add("dark")
+        } else {
+            document.documentElement.classList.remove("dark")
+        }
+        return newTheme;
+    })
+}
+```
