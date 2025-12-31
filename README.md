@@ -54,7 +54,13 @@ npm i --save @fortawesome/free-brands-svg-icons
 npm install tailwindcss @tailwindcss/vite
 ```
 
-#### Step 2: Add the @tailwindcss/vite plugin to your Vite configuration.
+#### Step 2: Add this line to App.css
+
+```shell
+@import "tailwindcss";
+```
+
+#### Step 3: Add the @tailwindcss/vite plugin to your Vite configuration.
 
 ```shell
 import { defineConfig } from 'vite'
@@ -89,8 +95,15 @@ npm i axios
 - The initial value for `useState()` can be a setUp method as well. E.g. : `() => populateTodos()`
 
 ```shell
-  3. const [cachedValue] useMemo(calculation, dependencies)
+  3. const [cachedValue] = useMemo(calculation, dependencies)
 ```
 
 - Used when we want to cache certain expensive calculations/operations during re-rendering of components
 - calculation can be a method
+
+### Dark mode
+
+- Step 1 : Add `@custom-variant dark (&:where(.dark, .dark *));` to the css file where `@import "tailwindcss"` is
+  mentioned (App.css)
+- Step 2 : Add prefix `dark:` to all tailwind utility classes
+- Step 3 : Add or remove `dark` from top level HTML element as per state value

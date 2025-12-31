@@ -54,11 +54,11 @@ const ProductListings = ({products}) => {
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-12">
                 <SearchBox label="Search" placeholder="Seach products..." value={itemToSearch}
                            handleSearchChange={handleSearchChange}/>
-                <Dropdown selectedValue="Popularity" options={options} label="Sort By" handleSort={handleSort}/>
+                <Dropdown selectedValue={sortingStrategy} options={options} label="Sort By" handleSort={handleSort}/>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-6 py-12">
-                {/*tricky nasty syntax alert!!*/}
+                {/* tricky nasty syntax alert!! */}
                 {filteredAndSortedProducts.length > 0 ? (
                     filteredAndSortedProducts.map((product) => (
                         <ProductCard key={product.productId} product={product}/>
