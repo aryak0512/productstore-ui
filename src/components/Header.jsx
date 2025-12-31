@@ -1,6 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMoon, faShoppingCart, faSun} from "@fortawesome/free-solid-svg-icons";
 import {useEffect, useState} from "react";
+import {NavLink} from "react-router-dom";
 
 const Header = () => {
 
@@ -43,21 +44,21 @@ const Header = () => {
                     </button>
 
                     <div className="flex space-x-6">
-                        <a href="/home" className="hover:text-gray-300">
+                        <NavLink to="/home" className="hover:text-gray-300">
                             Home
-                        </a>
-                        <a href="/login" className="hover:text-gray-300">
+                        </NavLink>
+                        <NavLink to="/login" className="hover:text-gray-300">
                             Shop
-                        </a>
-                        <a href="/about" className="hover:text-gray-300">
+                        </NavLink>
+                        <NavLink to="/about" className="hover:text-gray-300">
                             About
-                        </a>
-                        <a href="/contact" className="hover:text-gray-300">
+                        </NavLink>
+                        <NavLink to="/contact" className="hover:text-gray-300">
                             Contact
-                        </a>
-                        <a href="/cart" className="hover:text-gray-300">
+                        </NavLink>
+                        <NavLink to="/cart" className="hover:text-gray-300">
                             <FontAwesomeIcon icon={faShoppingCart}/>
-                        </a>
+                        </NavLink>
                     </div>
                 </div>
             </div>
