@@ -1,10 +1,12 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMoon, faShoppingCart, faSun} from "@fortawesome/free-solid-svg-icons";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
+import {CartContext} from "../context/CartContext.jsx";
 
 const Header = () => {
 
+    const {totalQuantity} = useContext(CartContext)
     const [theme, setTheme] = useState(() => {
         return localStorage.getItem("theme") === "dark" ? "dark" : "light";
     })
@@ -58,6 +60,7 @@ const Header = () => {
                         </NavLink>
                         <NavLink to="/cart" className="hover:text-gray-300">
                             <FontAwesomeIcon icon={faShoppingCart}/>
+                            <div>{totalQuantity}</div>
                         </NavLink>
                     </div>
                 </div>

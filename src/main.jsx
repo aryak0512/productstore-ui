@@ -8,7 +8,7 @@ import Contact, {submitForm} from "./components/Contact.jsx";
 import Cart from "./components/Cart.jsx";
 import Home, {productLoader} from "./components/Home.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
-import {CartContext} from "./context/CartContext.jsx";
+import {CartContext, CartProvider} from "./context/CartContext.jsx";
 
 const routeDefinitions = createRoutesFromElements(
     <Route path="/" element={<App/>} errorElement={<ErrorPage/>}>
@@ -23,20 +23,10 @@ const routeDefinitions = createRoutesFromElements(
 
 const appRouter = createBrowserRouter(routeDefinitions);
 
-const initialCartContext = {
-    cart: [],
-    addToCart: () => {
-    },
-    removeFromCart: () => {
-    },
-    setCart: () => {
-    },
-    totalQuantity: 0
-};
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <CartContext value={initialCartContext}>
+        <CartProvider>
             <RouterProvider router={appRouter}></RouterProvider>
-        </CartContext>
+        </CartProvider>
     </StrictMode>,
 )
